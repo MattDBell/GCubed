@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WizardsPlatformer", "WizardsPlatformer\WizardsPlatformer\WizardsPlatformer.csproj", "{B4F18825-D8EA-4C29-8E20-D9740AB96FE5}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "WizardsPlatformerContent", "WizardsPlatformer\WizardsPlatformerContent\WizardsPlatformerContent.contentproj", "{18E1C3DE-10D6-454A-BFBC-7B5F34752812}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B4F18825-D8EA-4C29-8E20-D9740AB96FE5}.Debug|x86.ActiveCfg = Debug|x86
+		{B4F18825-D8EA-4C29-8E20-D9740AB96FE5}.Debug|x86.Build.0 = Debug|x86
+		{B4F18825-D8EA-4C29-8E20-D9740AB96FE5}.Release|x86.ActiveCfg = Release|x86
+		{B4F18825-D8EA-4C29-8E20-D9740AB96FE5}.Release|x86.Build.0 = Release|x86
+		{18E1C3DE-10D6-454A-BFBC-7B5F34752812}.Debug|x86.ActiveCfg = Debug|x86
+		{18E1C3DE-10D6-454A-BFBC-7B5F34752812}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

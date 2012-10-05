@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<Level xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Level_01" Visible="true">
+    <Layers>
+        <Layer Name="Collision" Visible="true">
+            <Items>
+                <Item xsi:type="RectangleItem" Name="Rectangle_0004" Visible="true">
+                    <Position>
+                        <X>332</X>
+                        <Y>381</Y>
+                    </Position>
+                    <CustomProperties />
+                    <Width>142</Width>
+                    <Height>61</Height>
+                    <FillColor>
+                        <R>192</R>
+                        <G>0</G>
+                        <B>192</B>
+                        <A>145</A>
+                        <PackedValue>2445279424</PackedValue>
+                    </FillColor>
+                </Item>
+            </Items>
+            <ScrollSpeed>
+                <X>1</X>
+                <Y>1</Y>
+            </ScrollSpeed>
+        </Layer>
+    </Layers>
+    <CustomProperties />
+    <EditorRelated>
+        <NextItemNumber>20</NextItemNumber>
+        <ContentRootFolder>C:\</ContentRootFolder>
+        <CameraPosition>
+            <X>464</X>
+            <Y>235.333344</Y>
+        </CameraPosition>
+        <Version>1.3.0.0</Version>
+    </EditorRelated>
+</Level>

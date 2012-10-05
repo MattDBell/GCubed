@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<Level xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Level_01" Visible="true">
+    <Layers>
+        <Layer Name="Collision" Visible="true">
+            <Items>
+                <Item xsi:type="RectangleItem" Name="Rectangle_0001" Visible="true">
+                    <Position>
+                        <X>-526</X>
+                        <Y>86</Y>
+                    </Position>
+                    <CustomProperties />
+                    <Width>158</Width>
+                    <Height>80</Height>
+                    <FillColor>
+                        <R>192</R>
+                        <G>0</G>
+                        <B>192</B>
+                        <A>145</A>
+                        <PackedValue>2445279424</PackedValue>
+                    </FillColor>
+                </Item>
+                <Item xsi:type="RectangleItem" Name="Rectangle_0002" Visible="true">
+                    <Position>
+                        <X>-295</X>
+                        <Y>41</Y>
+                    </Position>
+                    <CustomProperties />
+                    <Width>142</Width>
+                    <Height>91</Height>
+                    <FillColor>
+                        <R>192</R>
+                        <G>0</G>
+                        <B>192</B>
+                        <A>145</A>
+                        <PackedValue>2445279424</PackedValue>
+                    </FillColor>
+                </Item>
+                <Item xsi:type="RectangleItem" Name="Rectangle_0003" Visible="true">
+                    <Position>
+                        <X>-457</X>
+                        <Y>-20</Y>
+                    </Position>
+                    <CustomProperties />
+                    <Width>71</Width>
+                    <Height>50</Height>
+                    <FillColor>
+                        <R>192</R>
+                        <G>0</G>
+                        <B>192</B>
+                        <A>145</A>
+                        <PackedValue>2445279424</PackedValue>
+                    </FillColor>
+                </Item>
+                <Item xsi:type="RectangleItem" Name="Rectangle_0004" Visible="true">
+                    <Position>
+                        <X>-328</X>
+                        <Y>72</Y>
+                    </Position>
+                    <CustomProperties />
+                    <Width>17</Width>
+                    <Height>145</Height>
+                    <FillColor>
+                        <R>192</R>
+                        <G>0</G>
+                        <B>192</B>
+                        <A>145</A>
+                        <PackedValue>2445279424</PackedValue>
+                    </FillColor>
+                </Item>
+            </Items>
+            <ScrollSpeed>
+                <X>1</X>
+                <Y>1</Y>
+            </ScrollSpeed>
+        </Layer>
+    </Layers>
+    <CustomProperties />
+    <EditorRelated>
+        <NextItemNumber>4</NextItemNumber>
+        <ContentRootFolder>C:\</ContentRootFolder>
+        <CameraPosition>
+            <X>-38.75</X>
+            <Y>172.5</Y>
+        </CameraPosition>
+        <Version>1.3.0.0</Version>
+    </EditorRelated>
+</Level>

@@ -1,0 +1,9 @@
+C:\Users\Glenn\Desktop\Platformer\Launcher\Launcher\bin\Release\Launcher.exe
+C:\Users\Glenn\Desktop\Platformer\Launcher\Launcher\bin\Release\Launcher.pdb
+C:\Users\Glenn\Desktop\Platformer\Launcher\Launcher\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Glenn\Desktop\Platformer\Launcher\Launcher\obj\x86\Release\Launcher.Form1.resources
+C:\Users\Glenn\Desktop\Platformer\Launcher\Launcher\obj\x86\Release\Launcher.Properties.Resources.resources
+C:\Users\Glenn\Desktop\Platformer\Launcher\Launcher\obj\x86\Release\GenerateResource.read.1.tlog
+C:\Users\Glenn\Desktop\Platformer\Launcher\Launcher\obj\x86\Release\GenerateResource.write.1.tlog
+C:\Users\Glenn\Desktop\Platformer\Launcher\Launcher\obj\x86\Release\Launcher.exe
+C:\Users\Glenn\Desktop\Platformer\Launcher\Launcher\obj\x86\Release\Launcher.pdb

@@ -44,9 +44,9 @@ namespace GLEED2D
         {
             int diameter = radius * 2;
             Vector2 center = new Vector2(radius, radius);
-            
-            
-            Texture2D circle = new Texture2D(graphicsDevice, diameter, diameter, 1, TextureUsage.None, SurfaceFormat.Color);
+
+
+            Texture2D circle = new Texture2D(graphicsDevice, diameter, diameter, false, SurfaceFormat.Color);
             Color[] colors = new Color[diameter * diameter];
             int y = -1;
             for (int i = 0; i < colors.Length; i++)
@@ -63,7 +63,7 @@ namespace GLEED2D
 
                 if (length > radius)
                 {
-                    colors[i] = Color.TransparentBlack;
+                    colors[i] = Color.Transparent;
                 }
                 else if (length >= radius - borderOuterTransitionWidth)
                 {

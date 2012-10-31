@@ -1,7 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C# Express 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gleed2d", "gleed2d\gleed2d.csproj", "{48A02BD1-0377-4FEA-A8D8-5586A60789F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gleed2dContent", "gleed2d\Content\gleed2dContent.contentproj", "{3BADB268-2C1F-48EC-947B-EA7F16B1FA1B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

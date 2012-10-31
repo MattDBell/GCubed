@@ -4,6 +4,7 @@ using System.Drawing.Design;
 using System.Reflection;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 

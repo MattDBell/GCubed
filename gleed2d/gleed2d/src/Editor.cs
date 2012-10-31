@@ -91,7 +91,7 @@ namespace GLEED2D
             resStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("GLEED2D.Resources.cursors.scale.cur");
             cursorScale = new Forms.Cursor(resStream);
             resStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("GLEED2D.Resources.circle.png");
-            dummytexture = Texture2D.FromFile(Game1.Instance.GraphicsDevice, resStream);
+            dummytexture = Texture2D.FromStream(Game1.Instance.GraphicsDevice, resStream);//Texture2D.FromFile(Game1.Instance.GraphicsDevice, resStream);
             Logger.Instance.log("Resources loaded.");
 
             Logger.Instance.log("Loading Settings.");
@@ -1153,8 +1153,8 @@ namespace GLEED2D
             {
                 Vector2 maincameraposition = camera.Position;
                 camera.Position *= l.ScrollSpeed;
-                sb.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.Deferred, SaveStateMode.None, camera.matrix);
-
+                //sb.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.Deferred, SaveStateMode.None, camera.matrix);
+                sb.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.LinearWrap, DepthStencilState.Default, RasterizerState.CullCounterClockwise, null, camera.matrix);
                 l.drawInEditor(sb);
                 if (l == SelectedLayer && state == EditorState.selecting)
                 {

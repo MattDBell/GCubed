@@ -8,9 +8,6 @@ using Microsoft.Xna.Framework;
 
 namespace CustomUITypeEditors
 {
-
-
-
     class Vector2EditorControl : UserControl
     {
         public Vector2 Value;
@@ -33,21 +30,21 @@ namespace CustomUITypeEditors
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawEllipse(new Pen(Color.Black, 3), center.X - radius, center.Y - radius, 2 * radius, 2 * radius);
+            g.DrawEllipse(new Pen(System.Drawing.Color.Black, 3), center.X - radius, center.Y - radius, 2 * radius, 2 * radius);
 
             if (Value == Vector2.Zero) return;
 
             //draw blue arc to visualize angle
-            g.DrawLine(new Pen(Color.Blue, 1), center.X, center.Y, center.X + radius, center.Y);
-            g.DrawArc(new Pen(Color.Blue, 1), center.X - 20, center.Y - 20, 40, 40, 0, (int)MathHelper.ToDegrees((float)angle));
+            g.DrawLine(new Pen(System.Drawing.Color.Blue, 1), center.X, center.Y, center.X + radius, center.Y);
+            g.DrawArc(new Pen(System.Drawing.Color.Blue, 1), center.X - 20, center.Y - 20, 40, 40, 0, (int)MathHelper.ToDegrees((float)angle));
 
             //draw black arrow
             Vector2 newpos = Vector2.Transform(Vector2.UnitX * radius, Matrix.CreateRotationZ((float)angle));
             Vector2 arrowpos1 = Vector2.Transform((Vector2.UnitX + new Vector2(-0.3f, -0.1f)) * radius, Matrix.CreateRotationZ((float)angle));
             Vector2 arrowpos2 = Vector2.Transform((Vector2.UnitX + new Vector2(-0.3f, +0.1f)) * radius, Matrix.CreateRotationZ((float)angle));
-            g.DrawLine(new Pen(Color.Black, 3), center.X, center.Y, center.X + newpos.X, center.Y + newpos.Y);
-            g.DrawLine(new Pen(Color.Black, 3), center.X + newpos.X, center.Y + newpos.Y, center.X + arrowpos1.X, center.Y + arrowpos1.Y);
-            g.DrawLine(new Pen(Color.Black, 3), center.X + newpos.X, center.Y + newpos.Y, center.X + arrowpos2.X, center.Y + arrowpos2.Y);
+            g.DrawLine(new Pen(System.Drawing.Color.Black, 3), center.X, center.Y, center.X + newpos.X, center.Y + newpos.Y);
+            g.DrawLine(new Pen(System.Drawing.Color.Black, 3), center.X + newpos.X, center.Y + newpos.Y, center.X + arrowpos1.X, center.Y + arrowpos1.Y);
+            g.DrawLine(new Pen(System.Drawing.Color.Black, 3), center.X + newpos.X, center.Y + newpos.Y, center.X + arrowpos2.X, center.Y + arrowpos2.Y);
         }
 
         private void onValueUpdated()

@@ -2,10 +2,12 @@
 using System.IO;
 using System.Xml.Serialization;
 using CustomUITypeEditors;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace GLEED2D
 {
+    
     public enum TextureOriginMethodEnum
     {
         TextureCenter, Centroid, TopLeft, TopRight, BottomLeft, BottomRight

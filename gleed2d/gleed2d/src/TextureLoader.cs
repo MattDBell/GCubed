@@ -27,10 +27,7 @@ namespace GLEED2D
         {
             if (!textures.ContainsKey(filename))
             {
-                TextureCreationParameters tcp = TextureCreationParameters.Default;
-                tcp.Format = SurfaceFormat.Color;
-                tcp.ColorKey = Constants.Instance.ColorTextureTransparent;
-                textures[filename] = Texture2D.FromFile(gd, filename, tcp);
+                textures[filename] = Texture2D.FromStream(gd, System.IO.File.Open(filename, System.IO.FileMode.Open));
             }
             return textures[filename];
         }

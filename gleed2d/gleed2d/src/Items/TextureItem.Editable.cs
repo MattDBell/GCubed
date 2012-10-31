@@ -121,7 +121,7 @@ namespace GLEED2D
             this.Position = position;
             this.Rotation = 0;
             this.Scale = Vector2.One;
-            this.TintColor = Microsoft.Xna.Framework.Graphics.Color.White;
+            this.TintColor = Microsoft.Xna.Framework.Color.White;
             FlipHorizontally = FlipVertically = false;
             loadIntoEditor();
             this.Origin = getTextureOrigin(texture);

@@ -17,11 +17,21 @@ using Microsoft.Xna.Framework.Media;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         GLEED2D.Level testLevel;
+        PlayerController m_player;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+
+            //graphics.PreferredBackBufferWidth = 1280;
+            //graphics.PreferredBackBufferHeight = 720;
+
+            graphics.PreferredBackBufferWidth = 640;
+            graphics.PreferredBackBufferHeight = 360;
+
+
         }
         public static bool drawNormals;
         /// <summary>
@@ -58,6 +68,8 @@ using Microsoft.Xna.Framework.Media;
 
             SuperHackyLevelParsing();
 
+            m_player = new PlayerController();
+            m_player.Init(Content);
             // TODO: use this.Content to load your game content here
         }
 
@@ -82,8 +94,10 @@ using Microsoft.Xna.Framework.Media;
                 this.Exit();
 
             // TODO: Add your update logic here
+            m_player.Update(gameTime);
 
             base.Update(gameTime);
+
         }
         /// <summary>
         /// This is called when the game should draw itself.
@@ -94,7 +108,12 @@ using Microsoft.Xna.Framework.Media;
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            SamplerState sampleState = new SamplerState();
+            sampleState.Filter = TextureFilter.Point;
+
+            //spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, sampleState, DepthStencilState.Default, RasterizerState.CullCounterClockwise);
             spriteBatch.Begin();
+            
 
             
             MouseState ms = Mouse.GetState();
@@ -111,8 +130,10 @@ using Microsoft.Xna.Framework.Media;
                     Utilities.DrawCircle(mousePos, 10, spriteBatch, Color.SpringGreen);
                 }
                 Utilities.DrawLine(mousePos, closePoint, spriteBatch, lineColor);
-            }       
-            
+            }
+
+
+            m_player.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

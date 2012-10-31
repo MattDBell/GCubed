@@ -1,9 +1,0 @@
-C:\Users\Glenn\Desktop\Platformer\WizardsPlatformer\WizardsPlatformer\WizardsPlatformer\bin\x86\Debug\Content\Utils\pen.xnb
-C:\Users\Glenn\Desktop\Platformer\WizardsPlatformer\WizardsPlatformer\WizardsPlatformer\bin\x86\Debug\Content\Levels\ZZGR.xml
-C:\Users\Glenn\Desktop\Platformer\WizardsPlatformer\WizardsPlatformer\WizardsPlatformer\bin\x86\Debug\Content\WIZZ.ini
-C:\Users\Glenn\Desktop\Platformer\WizardsPlatformer\WizardsPlatformer\WizardsPlatformer\bin\x86\Debug\WizardsPlatformer.exe
-C:\Users\Glenn\Desktop\Platformer\WizardsPlatformer\WizardsPlatformer\WizardsPlatformer\bin\x86\Debug\WizardsPlatformer.pdb
-C:\Users\Glenn\Desktop\Platformer\WizardsPlatformer\WizardsPlatformer\WizardsPlatformer\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Glenn\Desktop\Platformer\WizardsPlatformer\WizardsPlatformer\WizardsPlatformer\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
-C:\Users\Glenn\Desktop\Platformer\WizardsPlatformer\WizardsPlatformer\WizardsPlatformer\obj\x86\Debug\WizardsPlatformer.exe
-C:\Users\Glenn\Desktop\Platformer\WizardsPlatformer\WizardsPlatformer\WizardsPlatformer\obj\x86\Debug\WizardsPlatformer.pdb

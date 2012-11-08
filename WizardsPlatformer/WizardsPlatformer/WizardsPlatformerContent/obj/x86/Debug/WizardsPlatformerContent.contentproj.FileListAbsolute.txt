@@ -1,3 +1,0 @@
-C:\Users\Glenn\Desktop\Platformer\WizardsPlatformer\WizardsPlatformer\WizardsPlatformerContent\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\student\Desktop\WizardsPlatformer\WizardsPlatformer\WizardsPlatformerContent\obj\x86\Debug\ResolveAssemblyReference.cache
-D:\GCubed\WizardsPlatformer\WizardsPlatformer\WizardsPlatformerContent\obj\x86\Debug\ResolveAssemblyReference.cache

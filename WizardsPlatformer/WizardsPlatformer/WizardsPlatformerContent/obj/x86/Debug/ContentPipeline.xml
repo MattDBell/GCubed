@@ -7,8 +7,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\student\Desktop\WizardsPlatformer\WizardsPlatformer\WizardsPlatformer\bin\x86\Debug\Content\Utils\pen.xnb</Output>
-      <Time>2012-09-20T22:16:42-07:00</Time>
+      <Output>D:\GCubed\WizardsPlatformer\WizardsPlatformer\WizardsPlatformer\bin\x86\Debug\Content\Utils\pen.xnb</Output>
+      <Time>2012-11-07T12:38:24.1633629-08:00</Time>
     </Item>
     <Item>
       <Source>Dude.png</Source>
@@ -16,8 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\student\Desktop\WizardsPlatformer\WizardsPlatformer\WizardsPlatformer\bin\x86\Debug\Content\Dude.xnb</Output>
-      <Time>2012-10-24T14:33:17.607073-07:00</Time>
+      <Output>D:\GCubed\WizardsPlatformer\WizardsPlatformer\WizardsPlatformer\bin\x86\Debug\Content\Dude.xnb</Output>
+      <Time>2012-11-07T12:38:24.1633629-08:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -25,10 +25,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\student\Desktop\WizardsPlatformer\WizardsPlatformer\WizardsPlatformerContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\student\Desktop\WizardsPlatformer\WizardsPlatformer\WizardsPlatformer\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\student\Desktop\WizardsPlatformer\WizardsPlatformer\WizardsPlatformerContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\student\Desktop\WizardsPlatformer\WizardsPlatformer\WizardsPlatformer\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>D:\GCubed\WizardsPlatformer\WizardsPlatformer\WizardsPlatformerContent\</RootDirectory>
+      <LoggerRootDirectory>D:\GCubed\WizardsPlatformer\WizardsPlatformer\WizardsPlatformer\</LoggerRootDirectory>
+      <IntermediateDirectory>D:\GCubed\WizardsPlatformer\WizardsPlatformer\WizardsPlatformerContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>D:\GCubed\WizardsPlatformer\WizardsPlatformer\WizardsPlatformer\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>

@@ -19,9 +19,6 @@ abstract class Entity
     //Called once a frame.
     public abstract void Update(GameTime gameTime);
     
-    //Called once a draw call.
-    public abstract void Draw();
-    
     //This is going to change.  Collision handling should be move into a physics component.
     public abstract void HandleCollisions(List<zCollisionPrimitive> against);
 }

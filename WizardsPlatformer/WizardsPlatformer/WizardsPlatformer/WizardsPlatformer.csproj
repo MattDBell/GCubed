@@ -109,7 +109,8 @@
   <ItemGroup>
     <Compile Include="Collision\zCollisionCircle.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="Entity.cs" />
+    <Compile Include="EntitySystem\Entity.cs" />
+    <Compile Include="EntitySystem\EntityManager.cs" />
     <Compile Include="IniLoader.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="PlayerController.cs" />

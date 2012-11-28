@@ -1221,26 +1221,48 @@ namespace GLEED2D
             {
                 sb.Begin();
                 int max = Constants.Instance.GridNumberOfGridLines/2;
+                Color minorColor = Constants.Instance.GridColor * 0.5f;
+                Color majorColor = Constants.Instance.GridColor;
+
                 for(int x=0; x<=max; x++)
                 {
+                    Color drawColor = minorColor;
+                    if (x%4 == 0)
+                        drawColor = majorColor;
+
                     Vector2 start = Vector2.Transform(new Vector2(x, -max) * Constants.Instance.GridSpacing.X, camera.matrix);
                     Vector2 end = Vector2.Transform(new Vector2(x, max) * Constants.Instance.GridSpacing.X, camera.matrix);
-                    Primitives.Instance.drawLine(sb, start, end, Constants.Instance.GridColor, Constants.Instance.GridLineThickness);
+                    Primitives.Instance.drawLine(sb, start, end, drawColor, Constants.Instance.GridLineThickness);
+
                     start = Vector2.Transform(new Vector2(-x, -max) * Constants.Instance.GridSpacing.X, camera.matrix);
                     end = Vector2.Transform(new Vector2(-x, max) * Constants.Instance.GridSpacing.X, camera.matrix);
-                    Primitives.Instance.drawLine(sb, start, end, Constants.Instance.GridColor, Constants.Instance.GridLineThickness);
+                    Primitives.Instance.drawLine(sb, start, end, drawColor, Constants.Instance.GridLineThickness);
                 }
                 for (int y = 0; y <= max; y++)
                 {
+                    Color drawColor = minorColor;
+                    if (y % 4 == 0)
+                        drawColor = majorColor;
+
                     Vector2 start = Vector2.Transform(new Vector2(-max, y) * Constants.Instance.GridSpacing.Y, camera.matrix);
                     Vector2 end = Vector2.Transform(new Vector2(max, y) * Constants.Instance.GridSpacing.Y, camera.matrix);
-                    Primitives.Instance.drawLine(sb, start, end, Constants.Instance.GridColor, Constants.Instance.GridLineThickness);
+                    Primitives.Instance.drawLine(sb, start, end, drawColor, Constants.Instance.GridLineThickness);
+
+
                     start = Vector2.Transform(new Vector2(-max, -y) * Constants.Instance.GridSpacing.Y, camera.matrix);
                     end = Vector2.Transform(new Vector2(max, -y) * Constants.Instance.GridSpacing.Y, camera.matrix);
-                    Primitives.Instance.drawLine(sb, start, end, Constants.Instance.GridColor, Constants.Instance.GridLineThickness);
-                }        
+                    Primitives.Instance.drawLine(sb, start, end, drawColor, Constants.Instance.GridLineThickness);
+                } 
+
+
+                //Draw axis nicely
+                Primitives.Instance.drawLine(sb, Vector2.Transform(new Vector2(-max, 0) * Constants.Instance.GridSpacing.X, camera.matrix), Vector2.Transform(new Vector2(max, 0) * Constants.Instance.GridSpacing.X, camera.matrix), Color.Red, Constants.Instance.GridLineThickness);
+                Primitives.Instance.drawLine(sb, Vector2.Transform(new Vector2(0,-max) * Constants.Instance.GridSpacing.Y, camera.matrix), Vector2.Transform(new Vector2(0,max) * Constants.Instance.GridSpacing.Y, camera.matrix), Color.Green, Constants.Instance.GridLineThickness);
+                
                 sb.End();
+
             }
+
             if (Constants.Instance.ShowWorldOrigin)
             {
                 sb.Begin();

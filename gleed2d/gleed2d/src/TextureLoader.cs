@@ -25,9 +25,19 @@ namespace GLEED2D
 
         public Texture2D FromFile(GraphicsDevice gd, string filename)
         {
+            
             if (!textures.ContainsKey(filename))
             {
-                textures[filename] = Texture2D.FromStream(gd, System.IO.File.Open(filename, System.IO.FileMode.Open));
+                //Copy it to local dir and then open!
+                string workingDir = Constants.Instance.DefaultContentRootFolder + "\\Working";
+                string baseFileName = System.IO.Path.GetFileName(filename);
+                if (!System.IO.Directory.Exists(workingDir))
+                    System.IO.Directory.CreateDirectory(workingDir);
+                System.IO.File.Copy(filename,  workingDir + "\\" + baseFileName,true);
+
+                //Constants.Instance.DefaultContentRootFolder
+                System.IO.Stream inStream = System.IO.File.Open(workingDir + "\\" + baseFileName, System.IO.FileMode.Open);
+                textures[filename] = Texture2D.FromStream(gd,inStream);
             }
             return textures[filename];
         }

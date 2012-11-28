@@ -9,16 +9,18 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
+using Player = EntityManager.Player;
 /// <summary>
     /// This is the main type for your game
     /// </summary>
+    /// 
     public class Game1 : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         GLEED2D.Level testLevel;
-        PlayerController m_player;
-
+        Player m_player;
+        
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -31,7 +33,7 @@ using Microsoft.Xna.Framework.Media;
             graphics.PreferredBackBufferWidth = 640;
             graphics.PreferredBackBufferHeight = 360;
 
-
+            EntityManager.BOOT();
         }
         public static bool drawNormals;
         /// <summary>
@@ -68,7 +70,7 @@ using Microsoft.Xna.Framework.Media;
 
             SuperHackyLevelParsing();
 
-            m_player = new PlayerController();
+            m_player = (Player)EntityManager.get().Create(EntityManager.ENT_TYPE.PLAYER, null);
             m_player.Init(Content);
             // TODO: use this.Content to load your game content here
         }

@@ -72,7 +72,6 @@ partial class EntityManager
         {
             created = allTehEntities[(int)type][activeMark[(int)type]];
             activeMark[(int)type]++;
-            created.Spawn();
             return created;
         }
         created = Creators[(int)type]();
@@ -109,11 +108,12 @@ partial class EntityManager
                 e.Init(cm);
         }
     }
-    List<int> noLongerActive = new List<int>(); //would be awesome if this was static but noooo.  So now it's outside of the function.  In the cold.
+    List<int> noLongerActive = new List<int>(); //would be awesome if this was static function variable but noooo.  So now it's outside of the function.  In the cold.
     //This is what happens, C#, when you remove useful functionality.  Poor variables end up paying for it by freezing to death!
     public bool Update(GameTime gT)
     {
         inUpdate = true;
+        Integrate(gT);
         for(int listIndex = 0; listIndex < Ent_Count; ++listIndex)
         {
             List<Entity> eList = allTehEntities[listIndex];

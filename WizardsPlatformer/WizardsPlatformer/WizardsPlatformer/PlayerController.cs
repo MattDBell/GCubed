@@ -18,6 +18,7 @@ partial class EntityManager
         static bool booted = false;
         static public void BOOT()
         {
+            if (booted) return;
             EntityManager.Creators[(int)type] = PlayerIChooseYou;
             booted = true;
         }
@@ -26,50 +27,37 @@ partial class EntityManager
             return new Player();
         }
         Texture2D m_tex;
-        Vector2 m_pos;
-
-        Vector2 m_lastPos;  //Superhack
-
-
         //To be changed at a later date . . .
         bool onGround;
-
-        float m_moveSpeed = 30.0f / 1000.0f;   //Pixels per second
-        const float gravity = 9.8f;   //Pixels per second
         const float airTouchModifier = 0.25f;
-
-        Vector2 m_speeds;
-
+        
         protected Player()
         {
         }
 
         public override void Init(ContentManager content)
         {
+            base.Init(content);
             //Better would be to give it a handle to the texture, but this works for now
             m_tex = content.Load<Texture2D>("dude");
+            transform.SetMaxSpeed(100.0f);
+            
         }
 
         public override bool Update(GameTime gametime)
         {
             GamePadState padState = GamePad.GetState(PlayerIndex.One);
+            KeyboardState kState = Keyboard.GetState();
             float deltaTime = (float)gametime.ElapsedGameTime.TotalMilliseconds;
 
             float leftStickX = padState.ThumbSticks.Left.X;
-
+            leftStickX = kState.IsKeyDown(Keys.A) ? -1 : kState.IsKeyDown(Keys.D) ? 1 : 0;
+            if(leftStickX != 0)
+                transform.SetAcceleration(new Vector2(leftStickX * 100, 0));
             if (onGround)
             {
-                //Handle Jump
-                if (padState.IsButtonDown(Buttons.A))
-                {
-                    //onGround = false;
-                    //m_speeds.Y += -10.0f/1000.0f;
-                }
-
-                m_speeds.X = m_moveSpeed * leftStickX;
-                //TODO apply in direction of forward instead
-                m_pos += m_speeds * deltaTime;
-
+                //Get normal of ground
+                //RemoveComponent(normal);
             }
             else
             {
@@ -81,7 +69,7 @@ partial class EntityManager
         }
         public override void Draw(SpriteBatch spritebatch)
         {
-            spritebatch.Draw(m_tex, new Vector2((int)Math.Round(m_pos.X), (int)Math.Round(m_pos.Y)), Color.White);
+            spritebatch.Draw(m_tex, new Vector2((int)Math.Round(transform.GetPos().X), (int)Math.Round(transform.GetPos().Y)), Color.White);
         }
 
         public override void HandleCollisions(List<zCollisionPrimitive> listPrims)
@@ -92,10 +80,8 @@ partial class EntityManager
 
         public override void Spawn()
         {
-            m_pos = new Vector2(100, 300);
-            m_lastPos = m_pos;
-            onGround = true;
-            m_speeds = new Vector2(0);
+            transform.RePosition(new Vector2(100, 300));
+            base.Spawn();
         }
 
         public override void GiveCreatedRef(Entity newlyCreated, EntityManager.ENT_TYPE created)

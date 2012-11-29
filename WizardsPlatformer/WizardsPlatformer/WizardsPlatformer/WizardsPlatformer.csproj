@@ -111,6 +111,7 @@
     <Compile Include="Constants.cs" />
     <Compile Include="EntitySystem\Entity.cs" />
     <Compile Include="EntitySystem\EntityManager.cs" />
+    <Compile Include="EntitySystem\Transform.cs" />
     <Compile Include="IniLoader.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="PlayerController.cs" />
@@ -121,6 +122,7 @@
     <Compile Include="Collision\zCollisionAABB.cs" />
     <Compile Include="Collision\zCollisionPath.cs" />
     <Compile Include="Collision\zCollisionPrimitive.cs" />
+    <Compile Include="XNAisShit.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

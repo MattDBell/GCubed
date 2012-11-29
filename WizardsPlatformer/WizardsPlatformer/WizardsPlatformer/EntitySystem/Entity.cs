@@ -10,13 +10,15 @@ partial class EntityManager{
 //abstract class for now in case we decide to add variables.  Can always make it an interface later.  Jeez.
     abstract public class Entity
     {
+
+        protected Transform transform;
         //Called once on creation.  We'll probably create a wrapper around content manager in order to give
         //Handles to resources as opposed to duplicating resources
-        public abstract void Init(ContentManager content);
+        public virtual void Init(ContentManager content) { transform = EntityManager.get().GetTransform() ; } 
 
         //Called once on spawning, separates static resource initialization and per entity instance initialization,
         //For reusing entities.
-        public abstract void Spawn();
+        public virtual void Spawn(){ transform.ReActivate();}
 
         //Called once a frame.
         public abstract bool Update(GameTime gameTime);

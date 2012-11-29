@@ -72,6 +72,7 @@ using Player = EntityManager.Player;
 
             m_player = (Player)EntityManager.get().Create(EntityManager.ENT_TYPE.PLAYER, null);
             m_player.Init(Content);
+            m_player.Spawn();
             // TODO: use this.Content to load your game content here
         }
 
@@ -96,7 +97,7 @@ using Player = EntityManager.Player;
                 this.Exit();
 
             // TODO: Add your update logic here
-            m_player.Update(gameTime);
+            EntityManager.get().Update(gameTime);
 
             base.Update(gameTime);
 
@@ -135,7 +136,7 @@ using Player = EntityManager.Player;
             }
 
 
-            m_player.Draw(spriteBatch);
+            EntityManager.get().Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

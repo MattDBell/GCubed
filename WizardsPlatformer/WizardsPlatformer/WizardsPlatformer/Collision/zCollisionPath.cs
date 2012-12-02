@@ -138,4 +138,14 @@ class zCollisionPath:zCollisionPrimitive
     {
         Draw(spritebatch, Game1.drawNormals);
     }
+
+    override public CollResult CheckAgainst(zCollisionPrimitive other, EntityManager.Transform myRoot, EntityManager.Transform hisRoot)
+    {
+        throw new Exception("The method or operation is not implemented.");
+    }
+
+    override public CollResult RedirectedCheckAgainst(zCollisionPrimitive other, EntityManager.Transform myRoot, EntityManager.Transform hisRoot)
+    {
+        throw new Exception("The method or operation is not implemented.");
+    }
 }

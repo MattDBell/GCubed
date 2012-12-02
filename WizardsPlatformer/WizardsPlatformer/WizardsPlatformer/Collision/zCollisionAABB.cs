@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Content;
 
 class zCollisionAABB : zCollisionPrimitive
 {
-    private Rectangle m_rect;
+    protected Rectangle m_rect;
 
     public zCollisionAABB(Rectangle rect) { m_rect = rect; }
     private zCollisionAABB() { }
@@ -45,5 +45,35 @@ class zCollisionAABB : zCollisionPrimitive
         else { closestPoint.Y = testPoint.Y; }
 
         return closestPoint == testPoint;
+    }
+    public override CollResult CheckAgainst(zCollisionPrimitive other, EntityManager.Transform myRoot, EntityManager.Transform hisRoot)
+    {
+        //Transform both into correct space
+        if(other is zCollisionAABB)
+        {
+            CollResult ret = new CollResult();
+            ret.collided = false;
+            ret.normal = Vector2.Zero;
+            Rectangle mine = m_rect;
+            mine.Offset((int)myRoot.GetPos().X, (int)myRoot.GetPos().Y);
+        
+            Rectangle his = (other as zCollisionAABB).m_rect;
+            his.Offset((int)hisRoot.GetPos().X, (int)hisRoot.GetPos().Y);
+
+            if(mine.Intersects(his))
+            {
+                ret.collided = true;
+                ret.normal = new Vector2(his.Center.X - mine.Center.X, his.Center.Y - mine.Center.Y);
+            }
+            return ret;
+        }
+
+        //Oh no we can't handle any others.
+        return other.RedirectedCheckAgainst(this, hisRoot, myRoot); //Note the swap of transforms
+    }
+
+    override public CollResult RedirectedCheckAgainst(zCollisionPrimitive other, EntityManager.Transform myRoot, EntityManager.Transform hisRoot)
+    {
+        throw new Exception("The method or operation is not implemented.");
     }
 }

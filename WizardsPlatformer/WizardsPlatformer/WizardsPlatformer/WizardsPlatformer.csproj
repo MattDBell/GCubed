@@ -108,6 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Collision\CollisionComponent.cs" />
+    <Compile Include="Collision\CollisionManager.cs" />
     <Compile Include="Collision\zCollisionCircle.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="EntitySystem\Entity.cs" />

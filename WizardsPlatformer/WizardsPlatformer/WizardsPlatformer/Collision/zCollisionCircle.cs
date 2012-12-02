@@ -44,4 +44,14 @@ class zCollisionCircle : zCollisionPrimitive
     {
         Utilities.DrawCircle(m_pos, m_radius, spritebatch, Color.Purple);
     }
+
+    override public CollResult CheckAgainst(zCollisionPrimitive other, EntityManager.Transform myRoot, EntityManager.Transform hisRoot)
+    {
+        throw new Exception("The method or operation is not implemented.");
+    }
+
+    override public CollResult RedirectedCheckAgainst(zCollisionPrimitive other, EntityManager.Transform myRoot, EntityManager.Transform hisRoot)
+    {
+        throw new Exception("The method or operation is not implemented.");
+    }
 }

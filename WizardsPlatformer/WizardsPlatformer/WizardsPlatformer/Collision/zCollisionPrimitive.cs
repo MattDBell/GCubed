@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
 //May add more stuff later.  Also, should pool.
-class CollResult
+struct CollResult
 {
     public bool collided;
     public Vector2 normal;

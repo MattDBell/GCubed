@@ -70,7 +70,7 @@ using Player = EntityManager.Player;
 
             SuperHackyLevelParsing();
 
-            m_player = (Player)EntityManager.get().Create(EntityManager.ENT_TYPE.PLAYER, null);
+            m_player = (Player)EntityManager.get().Create(EntityManager.ENT_TYPE.PLAYER);
             m_player.Init(Content);
             m_player.Spawn();
             // TODO: use this.Content to load your game content here

@@ -15,9 +15,11 @@ partial class EntityManager
     void Integrate(GameTime gt) {foreach(Transform t in transforms) t.integrate(gt); }
     public class Transform
     {
-        const float gravity = 0.0f;
+        const float gravity = 0.0f; //Obviously should change
+        bool usesGravity = false;
         bool active;
         float maxSpeed = 100.0f;
+        float drag = 0.0f;
         Vector2 position = Vector2.Zero, velocity = Vector2.Zero, acceleration = Vector2.Zero, lastPosition = Vector2.Zero;
         public void Set(Vector2 position, Vector2 velocity, Vector2 acceleration, float maxSpeed)
         {
@@ -50,8 +52,17 @@ partial class EntityManager
             if (nextSpeed == currSpeed) return;
             velocity.Normalize();
             velocity *= nextSpeed;
-        }  
+        }
+        public void EnableGravity() { usesGravity = true; }
+        public void DisableGravity() { usesGravity = false; }
+        public void SetDrag(float to) { drag = to; }
+        public float GetDrag() { float womensClothing = drag; return womensClothing; }
         public void AddAcceleration(Vector2 toAdd) { acceleration += toAdd; }
+        public void AccelerateToZero(float factor)
+        {
+            acceleration = velocity;
+            acceleration *= -0.5f;
+        }
         public void RemoveComponentAlong(Vector2 normal) 
         { 
             float comp = Vector2.Dot(normal, velocity); 
@@ -64,10 +75,12 @@ partial class EntityManager
             if (!active)
                 return;
             Vector2 usedAccel = acceleration;
-            usedAccel.Y -= gravity; //But wait.  Isn't that a reference.  NOPE.  Because C# is retarded and Vector2 is a struct.
+            if(usesGravity)
+                usedAccel.Y -= gravity; //But wait.  Isn't that a reference.  NOPE.  Because C# is retarded and Vector2 is a struct.
             lastPosition = position;
             position += velocity * gt.UsableGameTime();  //What's UsableGameTime?  I don't know.  Maybe XNAisShit knows?
             velocity += usedAccel * gt.UsableGameTime();
+            velocity *= (1.0f - drag);
             if (velocity.LengthSquared() > maxSpeed * maxSpeed)
             {
                 MaxSpeedOut();

@@ -52,8 +52,16 @@ partial class EntityManager
 
             float leftStickX = padState.ThumbSticks.Left.X;
             leftStickX = kState.IsKeyDown(Keys.A) ? -1 : kState.IsKeyDown(Keys.D) ? 1 : 0;
-            if(leftStickX != 0)
+            if (leftStickX != 0)
+            {
+                transform.SetDrag(0);
                 transform.SetAcceleration(new Vector2(leftStickX * 100, 0));
+            }
+            else
+            {
+                transform.SetDrag(0.05f);
+                transform.SetAcceleration(Vector2.Zero);
+            }
             if (onGround)
             {
                 //Get normal of ground

@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
+
 class zCollisionAABB : zCollisionPrimitive
 {
     protected Rectangle m_rect;
@@ -64,6 +65,7 @@ class zCollisionAABB : zCollisionPrimitive
             {
                 ret.collided = true;
                 ret.normal = new Vector2(his.Center.X - mine.Center.X, his.Center.Y - mine.Center.Y);
+                ret.normal.Normalize();
             }
             return ret;
         }

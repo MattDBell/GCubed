@@ -39,10 +39,10 @@ partial class CollisionManager
             return new CollisionComponent(t, coll);
         }
         static public void BOOT() { compCreator = creator;  }
-        void SetTransform(EntityManager.Transform to) { tran = to; }
-        void SetCallBack(CollCallBack to) { callback = to; }
-        void AddPrimitive(Primitives prim, Vector2 offset ) { }
-        void CheckCollisionsAgainst(CollisionComponent other)
+        public void SetTransform(EntityManager.Transform to) { tran = to; }
+        public void SetCallBack(CollCallBack to) { callback = to; }
+        public void AddPrimitive(Primitives prim, Vector2 offset ) { }
+        public void CheckCollisionsAgainst(CollisionComponent other)
         {
             int collision = 0;
             for(int i = 0; i < prims.Count; ++i)

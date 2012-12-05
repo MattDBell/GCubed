@@ -158,6 +158,7 @@ using Player = EntityManager.Player;
                         //One size does not fit all
                         if (item.GetType() == typeof(GLEED2D.PathItem))
                         {
+                            CollisionManager.CollisionComponent foo = CollisionManager.Get().GetCollComponent();
                             collPrimList.Add(new zCollisionPath((GLEED2D.PathItem)item));
                         }
                         else if (item.GetType() == typeof(GLEED2D.RectangleItem))

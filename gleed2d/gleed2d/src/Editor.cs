@@ -1254,7 +1254,6 @@ namespace GLEED2D
                     Primitives.Instance.drawLine(sb, start, end, drawColor, Constants.Instance.GridLineThickness);
                 } 
 
-
                 //Draw axis nicely
                 Primitives.Instance.drawLine(sb, Vector2.Transform(new Vector2(-max, 0) * Constants.Instance.GridSpacing.X, camera.matrix), Vector2.Transform(new Vector2(max, 0) * Constants.Instance.GridSpacing.X, camera.matrix), Color.Red, Constants.Instance.GridLineThickness);
                 Primitives.Instance.drawLine(sb, Vector2.Transform(new Vector2(0,-max) * Constants.Instance.GridSpacing.Y, camera.matrix), Vector2.Transform(new Vector2(0,max) * Constants.Instance.GridSpacing.Y, camera.matrix), Color.Green, Constants.Instance.GridLineThickness);

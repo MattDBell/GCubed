@@ -36,5 +36,5 @@ abstract class zCollisionPrimitive
     /// <param name="hisRoot">Transform passed from other's CollisionComponent</param>
     /// <returns>CollResult instance describing collision</returns>
     abstract public CollResult RedirectedCheckAgainst(zCollisionPrimitive other, EntityManager.Transform myRoot, EntityManager.Transform hisRoot);
-    abstract public void Draw(SpriteBatch sb);
+    abstract public void Draw(SpriteBatch sb, Vector2 offset);
 }

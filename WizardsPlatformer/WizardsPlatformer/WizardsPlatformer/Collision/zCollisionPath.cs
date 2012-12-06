@@ -134,7 +134,7 @@ class zCollisionPath:zCollisionPrimitive
 
         Utilities.DrawRect(m_boundingRect, spritebatch, Color.Green);
     }
-    public override void Draw(SpriteBatch spritebatch)
+    public override void Draw(SpriteBatch spritebatch, Vector2 offset)
     {
         Draw(spritebatch, Game1.drawNormals);
     }

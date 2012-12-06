@@ -26,14 +26,11 @@ using Player = EntityManager.Player;
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-
             //graphics.PreferredBackBufferWidth = 1280;
             //graphics.PreferredBackBufferHeight = 720;
 
             graphics.PreferredBackBufferWidth = 640;
             graphics.PreferredBackBufferHeight = 360;
-
-            EntityManager.BOOT();
         }
         public static bool drawNormals;
         /// <summary>
@@ -45,7 +42,8 @@ using Player = EntityManager.Player;
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            EntityManager.BOOT();
+            CollisionManager.BOOT();
             base.Initialize();
         }
         /// <summary>
@@ -116,33 +114,13 @@ using Player = EntityManager.Player;
 
             //spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, sampleState, DepthStencilState.Default, RasterizerState.CullCounterClockwise);
             spriteBatch.Begin();
-            
-
-            
-            MouseState ms = Mouse.GetState();
-            Vector2 mousePos = new Vector2(ms.X, ms.Y);
-
-            foreach (zCollisionPrimitive thing in collPrimList)
-            {
-                thing.Draw(spriteBatch);
-
-                Vector2 closePoint;
-                Color lineColor = Color.Wheat;
-                if (thing.CheckPoint(mousePos, out closePoint))
-                {
-                    Utilities.DrawCircle(mousePos, 10, spriteBatch, Color.SpringGreen);
-                }
-                Utilities.DrawLine(mousePos, closePoint, spriteBatch, lineColor);
-            }
-
 
             EntityManager.get().Draw(spriteBatch);
+            CollisionManager.Get().DrawCollisionPrimatives(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }
 
-
-        List<zCollisionPrimitive> collPrimList = new List<zCollisionPrimitive>();
         void SuperHackyLevelParsing()
         {
             foreach (GLEED2D.Layer layer in testLevel.Layers)
@@ -159,18 +137,34 @@ using Player = EntityManager.Player;
                         if (item.GetType() == typeof(GLEED2D.PathItem))
                         {
                             CollisionManager.CollisionComponent foo = CollisionManager.Get().GetCollComponent();
-                            collPrimList.Add(new zCollisionPath((GLEED2D.PathItem)item));
+
+                            EntityManager.Transform footrans = EntityManager.get().GetTransform();
+                            footrans.Set(item.Position,Vector2.Zero,Vector2.Zero,0);
+                            item.Position = Vector2.Zero;
+                            foo.SetTransform(footrans);
+                            foo.AddPrimitive(new zCollisionPath((GLEED2D.PathItem)item));
                         }
                         else if (item.GetType() == typeof(GLEED2D.RectangleItem))
                         {
                             GLEED2D.RectangleItem gleeRect = (GLEED2D.RectangleItem)item;
                             Rectangle zeRect = new Rectangle((int)gleeRect.Position.X,(int)gleeRect.Position.Y,(int)gleeRect.Width,(int)gleeRect.Height);
-                            collPrimList.Add(new zCollisionAABB(zeRect));
+
+                            CollisionManager.CollisionComponent foo = CollisionManager.Get().GetCollComponent();
+                            EntityManager.Transform footrans = EntityManager.get().GetTransform();
+                            footrans.Set(item.Position, Vector2.Zero, Vector2.Zero, 0);
+                            item.Position = Vector2.Zero;
+                            foo.SetTransform(footrans);
+                            foo.AddPrimitive(new zCollisionAABB(zeRect));
                         }
                         else if (item.GetType() == typeof(GLEED2D.CircleItem))
                         {
                             GLEED2D.CircleItem gleeCircle = (GLEED2D.CircleItem)item;
-                            collPrimList.Add(new zCollisionCircle(gleeCircle.Position,gleeCircle.Radius));
+                            CollisionManager.CollisionComponent foo = CollisionManager.Get().GetCollComponent();
+                            EntityManager.Transform footrans = EntityManager.get().GetTransform();
+                            footrans.Set(item.Position, Vector2.Zero, Vector2.Zero, 0);
+                            item.Position = Vector2.Zero;
+                            foo.SetTransform(footrans);
+                            foo.AddPrimitive(new zCollisionCircle(gleeCircle.Position, gleeCircle.Radius));
                         }
                     }
                 }

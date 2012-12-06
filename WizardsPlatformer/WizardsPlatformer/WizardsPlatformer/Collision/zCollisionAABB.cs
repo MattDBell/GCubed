@@ -26,7 +26,7 @@ class zCollisionAABB : zCollisionPrimitive
     {
         return m_rect.Contains((int)point.X,(int)point.Y);
     }
-    public override void Draw(SpriteBatch spritebatch)
+    public override void Draw(SpriteBatch spritebatch, Vector2 offset)
     {
         DrawFilled(spritebatch,new Color(1,0,1,0.5f));
     }

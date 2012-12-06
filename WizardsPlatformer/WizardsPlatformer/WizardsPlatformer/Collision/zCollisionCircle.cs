@@ -40,7 +40,7 @@ class zCollisionCircle : zCollisionPrimitive
         closestPoint = m_pos + vecBetween;
     }
 
-    public override void Draw(SpriteBatch spritebatch)
+    public override void Draw(SpriteBatch spritebatch, Vector2 offset)
     {
         Utilities.DrawCircle(m_pos, m_radius, spritebatch, Color.Purple);
     }

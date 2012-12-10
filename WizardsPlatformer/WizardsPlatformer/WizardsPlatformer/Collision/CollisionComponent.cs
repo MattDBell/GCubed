@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 partial class CollisionManager
 {
-    public delegate void CollCallBack ( CollisionComponent mine, CollisionComponent other, CollResult coll, int collNumber, FLAGS others );
+    public delegate void CollCallBack ( CollisionComponent mine, CollisionComponent other, CollResult coll, int collNumber);
     delegate CollisionComponent ComponentCreator(EntityManager.Transform t, CollCallBack callBack);
     static ComponentCreator compCreator;
     static public void BOOT()                                          
@@ -44,22 +44,23 @@ partial class CollisionManager
         public void SetCallBack(CollCallBack to) { callback = to; }
         public void SetFlag(FLAGS flag) { flags |= flag; }
         public void UnSetFlag(FLAGS flag) { flags &= ~flag;  }
+        public bool CheckFlag(FLAGS flag) { return (flags & flag) != 0; }
         public void AddPrimitive(zCollisionPrimitive prim) { prims.Add(prim); }
         public void CheckCollisionsAgainst(CollisionComponent other)
         {
             int collision = 0;
             for(int i = 0; i < prims.Count; ++i)
             {
-                for(int y = 0; y < prims.Count; ++y)
+                for(int y = 0; y < other.prims.Count; ++y)
                 {
                     CollResult c = prims[i].CheckAgainst(other.prims[y], tran, other.tran);
                     if(c.collided)
                     {
 
-                        if (callback != null) callback(this, other, c, collision, flags);
+                        if (callback != null) callback(this, other, c, collision);
                         CollResult otherC = c;
                         otherC.normal *= -1;
-                        if(other.callback != null) other.callback(other, this, otherC, collision++, other.flags);
+                        if(other.callback != null) other.callback(other, this, otherC, collision++);
                     } //Note, currently multiple callbacks can be made, each with their own index
                 }
             }

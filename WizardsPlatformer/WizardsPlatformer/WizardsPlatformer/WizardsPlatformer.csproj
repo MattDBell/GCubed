@@ -110,6 +110,7 @@
     <Compile Include="Collision\CollisionComponent.cs" />
     <Compile Include="Collision\CollisionManager.cs" />
     <Compile Include="Collision\zCollisionCircle.cs" />
+    <Compile Include="Collision\zCollisionRay.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="EntitySystem\Entity.cs" />
     <Compile Include="EntitySystem\EntityManager.cs" />

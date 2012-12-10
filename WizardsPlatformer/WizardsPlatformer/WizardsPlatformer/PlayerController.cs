@@ -16,6 +16,8 @@ partial class EntityManager
     {
         static ENT_TYPE type = ENT_TYPE.PLAYER;
         static bool booted = false;
+        CollisionManager.CollisionComponent myComp;
+        CollisionManager.CollisionComponent rayCast;
         static public void BOOT()
         {
             if (booted) return;
@@ -28,7 +30,6 @@ partial class EntityManager
         }
         Texture2D m_tex;
         //To be changed at a later date . . .
-        bool onGround;
         const float airTouchModifier = 0.25f;
         
         protected Player()
@@ -41,11 +42,36 @@ partial class EntityManager
             //Better would be to give it a handle to the texture, but this works for now
             m_tex = content.Load<Texture2D>("dude");
             transform.SetMaxSpeed(100.0f);
+            myComp = CollisionManager.Get().GetCollComponent();
+            zCollisionCircle prim = new zCollisionCircle(Vector2.Zero, 5.0f);
+            myComp.AddPrimitive(prim);
+            myComp.SetTransform(transform);
+            myComp.SetCallBack(PhysicsCallback);
+            rayCast = CollisionManager.Get().GetCollComponent();
+            //zCollisionLine line = new zCollisionLine(Vector2.Zero, new Vector2(0, -1));
+            //rayCast.AddPrimitive(line);
+            rayCast.SetTransform(transform);
+            rayCast.SetCallBack(RayCastCallBack);
             
         }
+        public void PhysicsCallback(CollisionManager.CollisionComponent mine, CollisionManager.CollisionComponent other, CollResult coll, int collNumber)
+        {
+            if(other.CheckFlag(CollisionManager.FLAGS.GROUND))
+            {
+                //Move position to above the path (bottom of collision should be above the ground.  Above being relative to normal
+                //set velocity to be speed magnitude perpendicular to normal of the primitive it's colliding against, 
+            }
+        }
+        public void RayCastCallBack(CollisionManager.CollisionComponent mine, CollisionManager.CollisionComponent other, CollResult coll, int collNumber)
+        {
+            if(other.CheckFlag(CollisionManager.FLAGS.GROUND))
+            {
 
+            }
+        }
         public override bool Update(GameTime gametime)
         {
+            transform.EnableGravity();
             GamePadState padState = GamePad.GetState(PlayerIndex.One);
             KeyboardState kState = Keyboard.GetState();
             float deltaTime = (float)gametime.ElapsedGameTime.TotalMilliseconds;
@@ -60,15 +86,6 @@ partial class EntityManager
             else
             {
                 transform.AccelerateToZero(80);
-            }
-            if (onGround)
-            {
-                //Get normal of ground
-                //RemoveComponent(normal);
-            }
-            else
-            {
-
             }
             return false;
 

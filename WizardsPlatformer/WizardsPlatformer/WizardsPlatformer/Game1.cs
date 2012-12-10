@@ -95,6 +95,7 @@ using Player = EntityManager.Player;
                 this.Exit();
 
             // TODO: Add your update logic here
+            //This is important and results in Collisions -> Transformations -> Update
             CollisionManager.Get().CheckCollisions();
             EntityManager.get().Update(gameTime);
 

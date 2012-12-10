@@ -16,7 +16,7 @@ class zCollisionCircle : zCollisionPrimitive
         m_pos = centerPos;
         m_radius = radius;
     }
-
+    public Vector2 GetCenter() { return m_pos;  }
     public override bool CheckPoint(Vector2 testPoint, out Vector2 closestPoint)
     {
         closestPoint = testPoint;

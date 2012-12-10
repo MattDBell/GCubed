@@ -13,6 +13,8 @@ class zCollisionAABB : zCollisionPrimitive
     public zCollisionAABB(Rectangle rect) { m_rect = rect; }
     private zCollisionAABB() { }
 
+    public Vector2 TopLeft() { return new Vector2(m_rect.Left, m_rect.Top); }
+    public Vector2 BottomRight() { return new Vector2(m_rect.Right, m_rect.Bottom); }
     public void DrawFilled(SpriteBatch spritebatch,Color color)
     {
         Utilities.DrawFilledRect(m_rect, spritebatch, color);

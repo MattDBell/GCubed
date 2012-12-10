@@ -59,8 +59,7 @@ partial class EntityManager
             }
             else
             {
-                transform.SetDrag(0.05f);
-                transform.SetAcceleration(Vector2.Zero);
+                transform.AccelerateToZero(80);
             }
             if (onGround)
             {

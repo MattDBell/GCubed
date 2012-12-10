@@ -42,7 +42,7 @@ partial class CollisionManager
         public void SetCallBack(CollCallBack to) { callback = to; }
 
         public void AddPrimitive(zCollisionPrimitive prim) { prims.Add(prim); }
-        void CheckCollisionsAgainst(CollisionComponent other)
+        public void CheckCollisionsAgainst(CollisionComponent other)
         {
             int collision = 0;
             for(int i = 0; i < prims.Count; ++i)

@@ -14,7 +14,16 @@ partial class CollisionManager
     public static CollisionManager Get() { return instance; }
 
 
-    public void CheckCollisions() { }
+    public void CheckCollisions() 
+    {
+        for(int i = 0; i < allComponents.Count-1; ++i)
+        {
+            for(int y = i + 1; y < allComponents.Count; ++y)
+            {
+                allComponents[i].CheckCollisionsAgainst(allComponents[y]);
+            }
+        }
+    }
     public CollisionComponent GetCollComponent() 
     { 
         CollisionComponent ret = compCreator(null, null);

@@ -47,11 +47,17 @@ class zCollisionCircle : zCollisionPrimitive
 
     override public CollResult CheckAgainst(zCollisionPrimitive other, EntityManager.Transform myRoot, EntityManager.Transform hisRoot)
     {
-        throw new Exception("The method or operation is not implemented.");
+        CollResult ret = new CollResult();
+        ret.collided = false;
+        ret.normal = Vector2.Zero;
+        return ret;
     }
 
     override public CollResult RedirectedCheckAgainst(zCollisionPrimitive other, EntityManager.Transform myRoot, EntityManager.Transform hisRoot)
     {
-        throw new Exception("The method or operation is not implemented.");
-    }
+        CollResult ret = new CollResult();
+        ret.collided = false;
+        ret.normal = Vector2.Zero;
+        return ret;
+    }   
 }

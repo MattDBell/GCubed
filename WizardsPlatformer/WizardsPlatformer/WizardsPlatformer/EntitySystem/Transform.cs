@@ -20,6 +20,7 @@ partial class EntityManager
         bool active;
         float maxSpeed = 100.0f;
         float drag = 0.0f;
+        bool toZero = false;
         Vector2 position = Vector2.Zero, velocity = Vector2.Zero, acceleration = Vector2.Zero, lastPosition = Vector2.Zero;
         public void Set(Vector2 position, Vector2 velocity, Vector2 acceleration, float maxSpeed)
         {
@@ -40,10 +41,10 @@ partial class EntityManager
             acceleration = Vector2.Zero; 
         }
         public void SetMaxSpeed(float newMaxSpeed)  { maxSpeed = newMaxSpeed; }
-        public void SetAcceleration(Vector2 newAcc) { acceleration = newAcc; }
+        public void SetAcceleration(Vector2 newAcc) { acceleration = newAcc; toZero = false; }
         public void DeActivate() { active = false; }
         public void ReActivate() { active = true; }
-        public void MaxSpeedOut()                   { velocity.Normalize(); velocity *= maxSpeed; }
+        public void MaxSpeedOut() { velocity.Normalize(); velocity *= maxSpeed; toZero = false; }
         public void AddSpeed(float toAdd) 
         { 
             float currSpeed = velocity.Length();
@@ -52,16 +53,21 @@ partial class EntityManager
             if (nextSpeed == currSpeed) return;
             velocity.Normalize();
             velocity *= nextSpeed;
+            toZero = false;
         }
         public void EnableGravity() { usesGravity = true; }
         public void DisableGravity() { usesGravity = false; }
         public void SetDrag(float to) { drag = to; }
         public float GetDrag() { float womensClothing = drag; return womensClothing; }
-        public void AddAcceleration(Vector2 toAdd) { acceleration += toAdd; }
+        public void AddAcceleration(Vector2 toAdd) { acceleration += toAdd; toZero = false; }
         public void AccelerateToZero(float factor)
         {
+            if (velocity == Vector2.Zero)
+                return;
             acceleration = velocity;
-            acceleration *= -0.5f;
+            acceleration.Normalize();
+            acceleration *= -factor;
+            toZero = true;
         }
         public void RemoveComponentAlong(Vector2 normal) 
         { 
@@ -78,9 +84,15 @@ partial class EntityManager
             if(usesGravity)
                 usedAccel.Y -= gravity; //But wait.  Isn't that a reference.  NOPE.  Because C# is retarded and Vector2 is a struct.
             lastPosition = position;
-            position += velocity * gt.UsableGameTime();  //What's UsableGameTime?  I don't know.  Maybe XNAisShit knows?
             velocity += usedAccel * gt.UsableGameTime();
-            velocity *= (1.0f - drag);
+
+            if (toZero && Vector2.Dot(velocity, acceleration) >= 0)
+            {
+                velocity = Vector2.Zero;
+                toZero = false;
+            }
+            position += velocity * gt.UsableGameTime();  //What's UsableGameTime?  I don't know.  Maybe XNAisShit knows?
+            
             if (velocity.LengthSquared() > maxSpeed * maxSpeed)
             {
                 MaxSpeedOut();

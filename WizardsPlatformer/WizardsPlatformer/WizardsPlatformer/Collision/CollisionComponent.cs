@@ -8,24 +8,26 @@ using Microsoft.Xna.Framework.Graphics;
 
 partial class CollisionManager
 {
-    public delegate void CollCallBack ( CollisionComponent mine, CollisionComponent other, CollResult coll, int collNumber );
+    public delegate void CollCallBack ( CollisionComponent mine, CollisionComponent other, CollResult coll, int collNumber, FLAGS others );
     delegate CollisionComponent ComponentCreator(EntityManager.Transform t, CollCallBack callBack);
     static ComponentCreator compCreator;
     static public void BOOT()                                          
     {                                                                  
         CollisionComponent.BOOT();                                     
     }                                                                  
-    public enum Primitives                                             
+    public enum FLAGS                                             
     {                                                                  
-        AABB,                                                          
-        CIRCLE,                                                        
-        PATH,                                                          
-        TOTAL                                                          
+        GROUND          = 1 << 0,
+        WALLJUMPABLE    = 1 << 1,
+        ENEMY           = 1 << 2,
+        PLAYER          = 1 << 3,
+        PLAYERWEAPON    = 1 << 4
     }                                                                  
     public class CollisionComponent                                    
     {                                                                  
         //This should keep an AABB, by the way.
-        EntityManager.Transform tran;                                  
+        EntityManager.Transform tran;
+        FLAGS flags = (FLAGS)0;                          
         CollCallBack callback;                                         
         List<zCollisionPrimitive> prims = new List<zCollisionPrimitive>(); //Multiple prims per coll comp
         CollisionComponent(EntityManager.Transform t, CollCallBack coll) 
@@ -40,7 +42,8 @@ partial class CollisionManager
         static public void BOOT() { compCreator = creator;  }
         public void SetTransform(EntityManager.Transform to) { tran = to; }
         public void SetCallBack(CollCallBack to) { callback = to; }
-
+        public void SetFlag(FLAGS flag) { flags |= flag; }
+        public void UnSetFlag(FLAGS flag) { flags &= ~flag;  }
         public void AddPrimitive(zCollisionPrimitive prim) { prims.Add(prim); }
         public void CheckCollisionsAgainst(CollisionComponent other)
         {
@@ -53,10 +56,10 @@ partial class CollisionManager
                     if(c.collided)
                     {
 
-                        if (callback != null) callback(this, other, c, collision);
+                        if (callback != null) callback(this, other, c, collision, flags);
                         CollResult otherC = c;
                         otherC.normal *= -1;
-                        if(other.callback != null) other.callback(other, this, otherC, collision++);
+                        if(other.callback != null) other.callback(other, this, otherC, collision++, other.flags);
                     } //Note, currently multiple callbacks can be made, each with their own index
                 }
             }
